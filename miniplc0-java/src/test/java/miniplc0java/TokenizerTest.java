@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class TokenizerTest {
     @Test
     public void testTokenizer() throws FileNotFoundException, TokenizeError {
-        File file = new File("D:\\buaa\\2020autumn\\编译原理与技术\\语法分析\\java\\txt\\code.txt");
+        File file = new File("/Users/liuyuxuan/txt.txt");
         Scanner sc = new Scanner(file);
         StringIter it = new StringIter(sc);
         Tokenizer tokenizer = new Tokenizer(it);
