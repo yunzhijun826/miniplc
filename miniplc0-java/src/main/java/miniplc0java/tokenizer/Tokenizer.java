@@ -1,5 +1,5 @@
 
-        package miniplc0java.tokenizer;
+package miniplc0java.tokenizer;
 
 import jdk.jfr.Unsigned;
 import miniplc0java.error.TokenizeError;
@@ -73,7 +73,7 @@ public class Tokenizer {
         // -- 否则，返回标识符
         //
         // Token 的 Value 应填写标识符或关键字的字符串
-        String[] Keyword={"Begin","End", "Var","Const", "Print"};
+        String[] Keyword={"begin","end", "var","const", "print"};
         String toke="";
         Pos startPos=it.currentPos();
         toke+=it.nextChar();
@@ -83,12 +83,32 @@ public class Tokenizer {
             toke+=it.nextChar();
         }
         Pos endPos=it.currentPos();
-        for(i=0;i<len;i++){
-            if(toke.equals(Keyword[i])){
-                Token keyToken=new Token(TokenType.valueOf(Keyword[i]),toke,startPos,endPos);
-                return keyToken;
-            }
+        if(toke.equals("begin")){
+            Token keyToken=new Token(TokenType.Begin,toke,startPos,endPos);
+            return keyToken;
         }
+        else if(toke.equals("end")){
+            Token keyToken=new Token(TokenType.End,toke,startPos,endPos);
+            return keyToken;
+        }
+        else if(toke.equals("var")){
+            Token keyToken=new Token(TokenType.Var,toke,startPos,endPos);
+            return keyToken;
+        }
+        else if(toke.equals("const")){
+            Token keyToken=new Token(TokenType.Const,toke,startPos,endPos);
+            return keyToken;
+        }
+        else if(toke.equals("print")){
+            Token keyToken=new Token(TokenType.Print,toke,startPos,endPos);
+            return keyToken;
+        }
+//        for(i=0;i<len;i++){
+//            if(toke.equals(Keyword[i])){
+//                Token keyToken=new Token(TokenType.valueOf(Keyword[i]),toke,startPos,endPos);
+//                return keyToken;
+//            }
+//        }
         Token identToken=new Token(TokenType.Ident,toke,startPos,endPos);
         return identToken;
         //throw new Error("Not implemented");
